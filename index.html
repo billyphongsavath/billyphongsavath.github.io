@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Billy Phongsavath — Analytics Portfolio</title>
+  <meta name="description" content="Analytics portfolio: About, Projects, Resume, Contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --salmon:   #FFF1E5;
+      --paper:    #FFF9F5;
+      --claret:   #1b0f13;
+      --oxford:   #0F5499;
+      --teal:     #ad091f;
+      --ink:      #33302E;
+      --muted:    #66605A;
+      --warm:     #B8A99A;
+      --border:   #E9DECF;
+      --wheat:    #F2DFCE;
+      --max:      860px;
+      --serif:    'Playfair Display', Georgia, 'Times New Roman', serif;
+      --body:     'Source Serif 4', Georgia, serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--body);
+      background: var(--salmon);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 16px;
+      font-weight: 300;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Masthead bar ── */
+    .masthead {
+      background: var(--claret);
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .masthead-rule {
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,.3);
+      max-width: 120px;
+    }
+
+    .masthead-title {
+      font-family: var(--serif);
+      color: #fff;
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    /* ── Top nav strip ── */
+    .topnav {
+      border-bottom: 2px solid var(--ink);
+      padding: 0 18px;
+      background: var(--salmon);
+    }
+
+    .topnav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 0;
+    }
+
+    .site-name {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      color: var(--claret);
+    }
+
+    .topnav nav {
+      display: flex;
+      gap: 0;
+    }
+
+    .topnav nav a {
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      padding: 6px 12px;
+      font-family: var(--body);
+      font-weight: 400;
+      border-right: 1px solid var(--border);
+      transition: background .15s, color .15s;
+    }
+
+    .topnav nav a:first-child { border-left: 1px solid var(--border); }
+
+    .topnav nav a:hover {
+      background: var(--ink);
+      color: var(--salmon);
+      text-decoration: none;
+    }
+
+    /* ── Hero ── */
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px 80px;
+    }
+
+    .hero {
+      padding: 44px 0 36px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .avatar-wrap {
+      position: relative;
+    }
+
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      display: block;
+    }
+
+    .hero-text h1 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 5vw, 38px);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--claret);
+    }
+
+    .hero-kicker {
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+      font-family: var(--body);
+      font-weight: 400;
+    }
+
+    .hero-sub {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--muted);
+      font-style: italic;
+      font-family: var(--body);
+    }
+
+    /* ── Sections ── */
+    section { padding-top: 36px; }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--claret);
+      font-family: var(--body);
+      font-weight: 600;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid var(--claret);
+      display: inline-block;
+    }
+
+    /* ── About card ── */
+    .about-card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      padding: 22px 24px;
+    }
+
+    .about-card p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--ink);
+      font-weight: 300;
+      max-width: 78ch;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      font-size: 11px;
+      padding: 4px 10px;
+      border: 1px solid var(--warm);
+      color: var(--muted);
+      background: var(--salmon);
+      letter-spacing: .08em;
+      font-family: var(--body);
+      font-weight: 400;
+    }
+
+    /* ── Project grid ── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+    }
+
+    .project-card {
+      background: var(--paper);
+      padding: 24px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--ink);
+      transition: background .2s;
+      position: relative;
+    }
+
+    .project-card:last-child { border-right: none; }
+
+    .project-card:hover {
+      background: var(--wheat);
+      text-decoration: none;
+    }
+
+    .project-card:hover .project-arrow {
+      transform: translateX(4px);
+    }
+
+    .project-tag {
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--claret);
+      font-family: var(--body);
+      font-weight: 600;
+    }
+
+    .project-title {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -.01em;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+
+    .project-meta {
+      font-size: 11px;
+      color: var(--warm);
+      font-family: var(--body);
+      letter-spacing: .06em;
+    }
+
+    .project-arrow {
+      font-size: 18px;
+      color: var(--claret);
+      transition: transform .2s;
+      line-height: 1;
+    }
+
+    .project-highlight {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--teal);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-family: var(--body);
+      border: 1px solid var(--teal);
+      padding: 3px 8px;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    /* ── Resume ── */
+    .resume-card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .resume-card p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .btn-claret {
+      display: inline-block;
+      background: var(--claret);
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      font-family: var(--body);
+      font-weight: 600;
+      transition: background .15s;
+      text-decoration: none;
+    }
+
+    .btn-claret:hover {
+      background: #7a0c31;
+      text-decoration: none;
+    }
+
+    /* ── Contact ── */
+    .contact-card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      padding: 22px 24px;
+    }
+
+    .contact-card p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 0;
+    }
+
+    .contact-links a {
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      color: var(--ink);
+      font-family: var(--body);
+      font-weight: 600;
+      margin-right: -1px;
+      transition: background .15s, color .15s;
+    }
+
+    .contact-links a:hover {
+      background: var(--ink);
+      color: var(--salmon);
+      text-decoration: none;
+      z-index: 1;
+      position: relative;
+    }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 2px solid var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    footer span {
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-family: var(--body);
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 620px) {
+      .hero { grid-template-columns: 1fr; }
+      .avatar-wrap { display: none; }
+      .project-grid { grid-template-columns: 1fr; }
+      .project-card { border-right: none; }
+      .topnav nav a { padding: 6px 8px; font-size: 11px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Masthead -->
+  <div class="masthead">
+    <div class="masthead-rule"></div>
+    <span class="masthead-title">Analytics Portfolio</span>
+    <div class="masthead-rule"></div>
+  </div>
+
+  <!-- Top Nav -->
+  <div class="topnav">
+    <div class="topnav-inner">
+      <span class="site-name">Billy P.</span>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Résumé</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="avatar-wrap">
+        <img src="Billy Phongsavath-Vongxay (2).jpg" alt="Billy Phongsavath" class="avatar" />
+      </div>
+      <div class="hero-text">
+        <p class="hero-kicker">Analytics Professional · Montréal, QC</p>
+        <h1>Billy Phongsavath</h1>
+        <p class="hero-sub">Data Analyst &amp; BI Specialist · Ivey MMA '25</p>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section id="about">
+      <span class="section-label">About Me</span>
+      <div class="about-card">
+        <p>
+          Data professional and recent Ivey Master of Management in Analytics graduate with 3+ years
+          of experience delivering end-to-end BI and analytics solutions across the insurance sector.
+          Specialized in Customer Experience, Operations, and Regulatory analytics. Proven track record
+          of translating complex business problems into high-impact dashboards and operational data
+          products that improve compliance, reduce risk, and drive measurable cost and performance gains.
+        </p>
+        <div class="chips">
+          <span class="chip">SQL</span>
+          <span class="chip">Python</span>
+          <span class="chip">Tableau</span>
+          <span class="chip">R</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <span class="section-label">Projects</span>
+      <div class="project-grid">
+
+        <!-- Financial Analytics -->
+        <a class="project-card" href="project-retention-dashboard.html">         <!-- to be renamed to financial analytics-->
+          <span class="project-tag">Business Intelligence · Python</span>
+          <h3 class="project-title">Financial Analytics</h3>
+          <p class="project-desc">
+            Analyzing company's financial statements and 
+            performance to determine if they are over or undervalued.
+          </p>
+          <div class="project-highlight">$400K+ in savings</div>
+          <div class="project-footer">
+            <span class="project-meta">Financial Statements 
+                                     · Portfolio Management
+                                     · Python
+                                     · Dashboard
+            </span>
+            <span class="project-arrow">→</span>
+          </div>
+        </a>
+
+        <!-- Data Modeling -->
+        <a class="project-card" href="project-data-modeling.html">
+          <span class="project-tag">Data Modeling · Python · SQL</span>
+          <h3 class="project-title">Data Modeling</h3>
+          <p class="project-desc">
+            Built a concept relational database that mimicks a bank. 
+            The goal is to provide users with the ability to utilize a dataset that
+            resembles a company's database. It is to allow learners to have access to
+            apply SQL, Python or any analytics tools of their choice.
+          </p>
+          <div class="project-highlight">Predictive Segmentation</div>
+          <div class="project-footer">
+            <span class="project-meta">Analytics Engineer · Data Modeling · Python · SQL</span>
+            <span class="project-arrow">→</span>
+          </div>
+        </a>
+
+        <!-- Consumer Analytics -->
+        <a class="project-card" href="project-clv-framework.html">
+          <span class="project-tag">Data Modeling · Python · SQL</span>
+          <h3 class="project-title">Customer Analytics</h3>
+          <p class="project-desc">
+            Built a concept relational database that mimicks a bank. 
+            The goal is to provide users with the ability to utilize a dataset that
+            resembles a company's database. It is to allow learners to have access to
+            apply SQL, Python or any analytics tools of their choice.
+          </p>
+          <div class="project-highlight">Predictive Segmentation</div>
+          <div class="project-footer">
+            <span class="project-meta">Analytics Engineer · Data Modeling · Python · SQL</span>
+            <span class="project-arrow">→</span>
+          </div>
+        </a>
+
+                <!-- Other Analytics -->
+        <a class="project-card" href="project-other.html">
+          <span class="project-tag">Data Modeling · Python · SQL</span>
+          <h3 class="project-title">Placeholder</h3>
+          <p class="project-desc">
+            A portfolio of random analytics projects that I do for fun.
+          </p>
+          <div class="project-highlight">Leisure Analytics</div>
+          <div class="project-footer">
+            <span class="project-meta">Analytics Engineer · Data Modeling · Python · SQL</span>
+            <span class="project-arrow">→</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+
+
+    <!-- Resume -->
+    <section id="resume">
+      <span class="section-label">Résumé</span>
+      <div class="resume-card">
+        <p>Full résumé available as a PDF — experience, education, and technical skills.</p>
+        <a class="btn-claret" href="YOUR_RESUME_URL.pdf" target="_blank">Open PDF ↗</a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <span class="section-label">Contact</span>
+      <div class="contact-card">
+        <p>Best way to reach me — open to analytics, BI, and data strategy roles.</p>
+        <div class="contact-links">
+          <a href="mailto:b.phongsavath@outlook.com">Email</a>
+          <a href="https://www.linkedin.com/in/billy-p-a0679814a/" target="_blank">LinkedIn</a>
+          <a href="https://github.com/billyphongsavath" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>© <span id="y"></span> Billy P.</span>
+      <span>Analytics Portfolio</span>
+    </footer>
+
+  </div>
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
